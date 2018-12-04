@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <meta charset='utf-8'>
+  <head>
+
+<!-- meta使用viewport以确保页面可自由缩放 -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- 引入 jQuery Mobile 样式 -->
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+<!-- 引入 jQuery 库 -->
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- 引入 jQuery Mobile 库 -->
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+</head>
+<body>
+
+
+
+<div data-role="page" style="background:url(./images/background1.jpg) 50% 0 no-repeat;background-size:cover;position:fixed">
+
+  <div data-role="header" data-position="fixed">
+    <h1>今日天气</h1>
+  </div>
+  <div data-role="main" class="ui-content" style="font-size:20px; color:#457d8f">
+    <center><p id="tianqi"></p></center>
+  </div>
+  <div data-role="main" class="ui-content"style="font-size:20px; color:#457d8f">
+    <center><p id="wendu"></p></center>
+  </div>
+  <div data-role="main" class="ui-content"style="font-size:20px; color:#457d8f">
+    <center><p id="fengli"></p></center>
+  </div>
+
+  <div data-role="footer" data-position="fixed">
+    <h1>返回</h1>
+  </div>
+
+</div>
+  
+  <script>
+   $.getJSON("http://wthrcdn.etouch.cn/weather_mini?city=北京",function(data){
+   		document.getElementById('tianqi').innerHTML = data.data.forecast[0].type;
+     document.getElementById('wendu').innerHTML = data.data.forecast[0].low;
+     document.getElementById('fengli').innerHTML = data.data.forecast[0].fengxiang;
+   });
+      
+ //  window.onload = function(){
+
+//    document.getElementById('tianqi').innerHTML = result.data.yesterday.date;
+//};
+</script>
+</body>
+</html>
